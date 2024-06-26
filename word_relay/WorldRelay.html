@@ -9,13 +9,13 @@
 </head>
 <body>
     <div id="root">
-        <word-relay></word-relay>
-        <word-relay></word-relay>
-        <word-relay></word-relay>
+        <word-relay start-word="초밥"></word-relay>
+        <word-relay start-word="무한도전"></word-relay>
+        <word-relay start-word="동굴"></word-relay>
     </div>
     <script>
         // 전역 컴포넌트
-        Vue.component('word-relay', {
+        Vue.component('wordRelay', {
             template: `
                 <div>
                   <div>{{word}}</div>
@@ -31,9 +31,10 @@
             //     input: '',
             //     result: '',
             // },
+            props: ['startWord'],
             data() {
                 return {
-                    word: '감자',
+                    word: this.startWord,
                     input: '',
                     result: ''
                 }
