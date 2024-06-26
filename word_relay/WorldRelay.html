@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>끝말잇기</title>
+    <script src="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>{{word}}</div>
+        <form v-on:submit="onSubmitForm">
+            <input type="text" ref="answer" v-model="input">
+            <button type="submit">입력!</button>
+        </form>
+        <div>{{result}}</div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#root',
+            data: {
+                word: '감자',
+                input: '',
+                result: '',
+            },
+            methods: {
+                onSubmitForm(e) {
+                    e.preventDefault();
+                    console.log(this);
+                    if (this.word.slice(-1) === this.input[0]) {
+                        this.result = "정답";
+                        this.word = this.input;
+                        this.input = "";
+                    } else {
+                        this.result = "땡";
+                    }
+                    this.$refs.answer.focus();
+                }
+            },
+        })
+    </script>
+</body>
+</html>
