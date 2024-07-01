@@ -68,8 +68,7 @@ export default {
     timeouts.forEach((t) => {
       clearTimeout(t);
     });
-  },
-  watch: {}
+  }
 };
 </script>
 
